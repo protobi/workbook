@@ -26,11 +26,6 @@ module.exports = function(XLSX) {
         return this.Sheets[sheetName];
       },
 
-      addStyles: function(styles) {
-        var self = this;
-        return styles.forEach(function(style) { self.CellStyles.push(style); })
-      },
-
       getSheetRows: function(sheetName) {
         var ws = this.getSheet(sheetName); // init if not previously called
         return rows[sheetName];
@@ -58,6 +53,7 @@ module.exports = function(XLSX) {
         var ws = this.getSheet(sheetName);
         var sheetRows = this.getSheetRows(sheetName);
         rows.forEach(function(row) { sheetRows.push(row);});
+        return this;
       },
 
       finalize: function() {
