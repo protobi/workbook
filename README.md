@@ -78,6 +78,9 @@ workbook.addStyles([
 ])
 ```
 
+Note that the first style specifies the default cell style and the second must be `gray125` for some reason
+(see http://stackoverflow.com/questions/11116176/cell-styles-in-openxml-spreadsheet-spreadsheetml)
+
 # Finalize and save
 
 ```js
