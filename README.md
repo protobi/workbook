@@ -43,7 +43,7 @@ var workbook = new Workbook()
     }).finalize();
 
 var OUTFILE = '/tmp/wb.xlsx';
-XLSX.writeFile(workbook, OUTFILE);
+XLSX.writeFile(workbook, OUTFILE, {defaultCellStyle: { font: {name: 'Arial', sz: '12'}}});
 console.log("Results written to " + OUTFILE)
 ```
 
