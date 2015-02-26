@@ -1,52 +1,41 @@
-# workbook
-Wrapper for js-xlsx providing convenient way to accumulate sheets, rows, styles.
+var XLSX = require('xlsx');
+var Workbook = require('./workbook')(XLSX);
 
-
-# Install
-
-`npm install protobi/workbook`
-`npm install protobi/js-xlsx` (fork of SheetJS/js-xlsx testing extensions to save cell styles)
-
-
-# Use
-
-```js
-var XLSX = require('xlsx'),
-     Workbook = require('workbook')(XLSX)
-
-var wb = new Workbook(XLSX);
-```
-
-Add rows to worksheets as arrays of row arrays.  Values may be elementary (e.g. number, string, date)
-or Common Spreadsheet Format (CSF) objects
-
-```js
+var workbook = new Workbook();
+console.log(workbook)
 workbook.addRowsToSheet("Main", [
   ["This is a merged cell"],
   [
-    {"v": "Gray pattern", "s": "1"},
-    {"v": "Blue ", "s": "2"},
-    {"v": "Gray  ", "s": "3"}
-    {"v": "Gold ", "s": "4"}
+    {"v": "Bold", "s": "1"},
+    {"v": "Italic", "s": "1"},
+    {"v": "Bold Italic", "s": "1"}
+  ],
+  [
+    {"v": "red font", "s": "2"},
+    {"v": "red fill", "s": "2"}
+  ],
+  [
+    {"v": "Arial", "s": "3"},
+    {"v": "Arial 18pt", "s": "3"}
   ],
   [0.618033989, {"v": 0.618033989, "t": "n", "z": "0.00"}, {"v": 0.618033989, "z": "0.00%"},{"v": 0.618033989, "z": "0.00%","s":"4"}],
-  [(new Date()).toLocaleString()]
+  [
+    {"v": 0.618033989, "s": "1"},
+    {"v": 0.618033989, "s": "2"},
+    {"v": 0.618033989, "s": "3"},
+    {"v": 0.618033989, "s": "4"}
+  ],
+  [
+    {"f": "=SUM(A5,C5)"}
+  ],
+    [(new Date()).toLocaleString()]
 ]);
-```
 
-Merge cells by specifying start and end cell.  This method may be called repeatedly.  No error checking for overlapping rows is done.
-
-```js
 workbook.mergeCells("Main", {
   "s": {"c": 0, "r": 0 },
   "e": {"c": 2, "r": 0 }
 });
 
-```
-
-Styles can be added.  The method `addStyle` returns an integer index that can be referenced in `cell.s`.
-
-```js
 workbook.addStyles([
   {
     font: {name: 'Arial', sz: '12'},
@@ -76,14 +65,9 @@ workbook.addStyles([
     numFmt: null
   }
 ])
-```
 
-# Finalize and save
-
-```js
 workbook.finalize();
 console.log(workbook);
 var fs = require('fs');
 var OUTFILE = '/tmp/wb.xlsx';
 XLSX.writeFile(workbook, OUTFILE);
-```
