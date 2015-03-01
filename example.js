@@ -1,7 +1,7 @@
 var XLSX = require('xlsx');
-var Workbook = require('./workbook')(XLSX);
+var Workbook = require('./workbook');
 
-var workbook = new Workbook()
+var workbook = new Workbook(XLSX)
     .addRowsToSheet("Main", [
       ["This is a merged cell"],
       [ // fill colors
