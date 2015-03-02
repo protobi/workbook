@@ -22,6 +22,13 @@ var workbook = new Workbook(XLSX)
         {"v": "Courier New", "s": {font: {name: "Courier New", sz: 14}}}
       ],
       [
+        {"v": "Normal"},
+        {"v": "Bold", "s": {font: {bold: true}, fill: { fgColor: { rgb: "FFFF0000"}}}},
+        {"v": "Italic", "s": {font: {italic: true}, fill: { fgColor: { rgb: "FF00FF00"}}}},
+        {"v": "Underline", "s": {underline: {bold: true}}},
+        {"v": "All", "s": {font: {bold: true ,italic: true, underline: true}}}
+      ],
+      [
         0.618033989,
         {"v": 0.618033989},
         {"v": 0.618033989, "t": "n"},
