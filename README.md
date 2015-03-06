@@ -1,23 +1,23 @@
 # workbook
-Wrapper for js-xlsx providing convenient way to accumulate sheets, rows, styles.
+Wrapper for [js-xlsx](https://github.com/SheetJS/js-xlsx) providing convenient way to accumulate sheets, rows, styles.
 
 
 # Install
 
-`npm install workbook`
-`npm install js-xlsx` (fork of SheetJS/js-xlsx testing extensions to save cell styles)
+* `npm install workbook`
+* `npm install js-xlsx` 
 
-Note that exporting styles is still in development. In the interim, use the following development branch to export styles using the `.s` attribute.  
-`npm install protobi/js-xlsx` 
+Note that exporting styles is still in development. In the interim, use the following development branch to export styles using the `.s` attribute instead:
+* `npm install protobi/js-xlsx` 
 
 
 # Use
 
 ```js
 var XLSX = require('xlsx');
-var Workbook = require('./workbook')(XLSX);
+var Workbook = require('./workbook');
 
-var workbook = new Workbook()
+var workbook = new Workbook(XLSX)
     .addRowsToSheet("Main", [
       ["This is a merged cell"],
       [
