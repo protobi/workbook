@@ -4,8 +4,11 @@ Wrapper for js-xlsx providing convenient way to accumulate sheets, rows, styles.
 
 # Install
 
-`npm install protobi/workbook`
-`npm install protobi/js-xlsx` (fork of SheetJS/js-xlsx testing extensions to save cell styles)
+`npm install workbook`
+`npm install js-xlsx` (fork of SheetJS/js-xlsx testing extensions to save cell styles)
+
+Note that exporting styles is still in development. In the interim, use the following development branch to export styles using the `.s` attribute.  
+`npm install protobi/js-xlsx` 
 
 
 # Use
