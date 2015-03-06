@@ -4,10 +4,10 @@
   "description": "description: Convenience wrapper for js-xlsx to incrementally build Excel workbooks programmatically",
   "main": "workbook.js",
   "dependencies": {
-    "xlsx": "git://github.com/protobi/js-xlsx"
   },
   "devDependencies": {
     "cheerio": "git://github.com/cheeriojs/cheerio"
+    "xlsx": "git://github.com/protobi/js-xlsx"
   },
   "scripts": {
     "test": "mocha"
