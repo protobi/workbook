@@ -1,17 +1,18 @@
 # workbook
 Wrapper for [js-xlsx](https://github.com/SheetJS/js-xlsx) providing convenient way to accumulate sheets, rows, styles.
 
+[![NPM](https://nodei.co/npm/workbook.png?downloads=true&stars=true)](https://nodei.co/npm/workbook/)
 
-# Install
+## Install
 
-* `npm install workbook`
-* `npm install js-xlsx` 
+* `npm install workbook --save`
+* `npm install js-xlsx --save` 
 
 Note that exporting styles is still in development. In the interim, use the following development branch to export styles using the `.s` attribute instead:
-* `npm install protobi/js-xlsx` 
+* `npm install protobi/js-xlsx --save` 
 
 
-# Use
+## Use
 
 ```js
 var XLSX = require('xlsx');
