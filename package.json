@@ -6,7 +6,7 @@
   "dependencies": {
   },
   "devDependencies": {
-    "cheerio": "git://github.com/cheeriojs/cheerio"
+    "cheerio": "git://github.com/cheeriojs/cheerio",
     "xlsx": "git://github.com/protobi/js-xlsx"
   },
   "scripts": {
