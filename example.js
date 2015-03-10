@@ -8,7 +8,36 @@ function JSDateToExcelDate(inDate) {
 
 var workbook = new Workbook(XLSX)
     .addRowsToSheet("Main", [
-      ["This is a submerged cell"],
+      [ {
+        v: "This is a submerged cell",
+        s:{
+          border: {
+            left: {style: 'thick', color: {auto: 1}},
+            top: {style: 'thick', color: {auto: 1}},
+            bottom: {style: 'thick', color: {auto: 1}}
+          }
+        }
+      },
+        {
+          v: "Pirate ship",
+          s:{
+            border: {
+              top: {style: 'thick', color: {auto: 1}},
+              bottom: {style: 'thick', color: {auto: 1}}
+            }
+          }
+        },
+        {
+          v: "Sunken treasure",
+          s:{
+            border: {
+              right: {style: 'thick', color: {auto: 1}},
+              top: {style: 'thick', color: {auto: 1}},
+              bottom: {style: 'thick', color: {auto: 1}}
+            }
+          }
+        }
+      ],
       [
         {"v": "Blank"},
         {"v": "Red", "s": {fill: { fgColor: { rgb: "FFFF0000"}}}},
@@ -74,6 +103,23 @@ var workbook = new Workbook(XLSX)
         {v: new Date(),  s: {numFmt: 'm/d/yy'}},
         {v: 42065.02247239584,  s: {numFmt: 'm/d/yy'}},
         {v: new Date(),  s: {numFmt: 'm/d/yy h:mm:ss AM/PM'}}
+      ],
+      [
+//          {v: "Apple", s: {border: {top: { style: "thin"}}, left: { style: "thin"}, right: { style: "thin"}, bottom: { style: "thin"}}}
+        {
+          v: "Border test",
+          s: {
+            border: {
+              diagonalUp: false,
+              diagonalDown: true,
+              top: { style: "thick", color: {auto: 1}},
+              right: { style: "thick", color: {theme: "5"}},
+              bottom: { style: "thick", color: {theme: 5, tint: "-0.3"}},
+              left: { style: "thick", color: {rgb: "FFFFAA00"}},
+              diagonal: {style: "thick", color: {theme: 6}}
+            }
+          }
+        }
       ]
     ]).mergeCells("Main", {
       "s": {"c": 0, "r": 0 },
