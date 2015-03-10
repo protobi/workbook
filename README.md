@@ -20,7 +20,37 @@ var Workbook = require('./workbook');
 
 var workbook = new Workbook(XLSX)
     .addRowsToSheet("Main", [
-      ["This is a merged cell"],
+      [
+        {
+           v: "This is a submerged cell",
+           s:{
+             border: {
+               left: {style: 'thick', color: {auto: 1}},
+               top: {style: 'thick', color: {auto: 1}},
+               bottom: {style: 'thick', color: {auto: 1}}
+             }
+             }
+        },
+        {
+             v: "Pirate ship",
+             s:{
+               border: {
+                 top: {style: 'thick', color: {auto: 1}},
+                 bottom: {style: 'thick', color: {auto: 1}}
+               }
+             }
+        },
+        {
+             v: "Sunken treasure",
+             s:{
+               border: {
+                 right: {style: 'thick', color: {auto: 1}},
+                 top: {style: 'thick', color: {auto: 1}},
+                 bottom: {style: 'thick', color: {auto: 1}}
+               }
+             }
+        }
+       ],
       [
         {"v": "Blank"},
         {"v": "Red", "s": {fill: { fgColor: { rgb: "FFFF0000"}}}},
