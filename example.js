@@ -1,4 +1,4 @@
-var XLSX = require('xlsx');
+var XLSX = require('../js-xlsx');
 var Workbook = require('./workbook');
 
 ///credit http://daveaddey.com/?p=40
@@ -47,7 +47,7 @@ var workbook = new Workbook(XLSX)
       [
         {"v": "Default"},
         {"v": "Arial", "s": {font: {name: "Arial", sz: 24}}},
-        {"v": "Times New Roman", "s": {font: {name: "Times New Roman", sz: 16}}},
+        {"v": "Times New Roman", "s": {font: {name: "Times New Roman", sz: 16, bold: true, italic: true, underline: true, strike: true, outline: true, shadow:true, vertAlign: "superscript"}}},
         {"v": "Courier New", "s": {font: {name: "Courier New", sz: 14}}}
       ],
       [
@@ -127,5 +127,10 @@ var workbook = new Workbook(XLSX)
     }).finalize();
 
 var OUTFILE = '/tmp/wb.xlsx';
+var OUTFILE1 = '/tmp/wb1.xlsx';
 XLSX.writeFile(workbook, OUTFILE);
 console.log("Results written to " + OUTFILE)
+
+var workbook1 = XLSX.readFile(OUTFILE, {cellStyles: true, cellNF: true});
+XLSX.writeFile(workbook1, OUTFILE1);
+console.log("Results written to " + OUTFILE1)
