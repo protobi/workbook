@@ -1,7 +1,6 @@
 // Support  CommonJS, AMD or independent user
 (function (name, definition) {
   if (typeof define == 'function' && typeof define.amd == 'object') {
-    console.log("AMD");
     define(definition);
   }
   else if (typeof module != 'undefined') module.exports = definition();
@@ -107,7 +106,6 @@
               if (typeof cell.v === 'number') cell.t = 'n';
               else if (typeof cell.v === 'boolean') cell.t = 'b';
               else if (cell.v instanceof Date) {
-                console.log("Converting")
                 cell.t = 'n';
                 cell.z = XLSX.SSF._table[14];
                 cell.v = this.datenum(cell.v);
