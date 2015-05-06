@@ -92,8 +92,9 @@
 
           var data = this.getSheetRows(sheetName) || [];
 
-          for (var R = 0; R != data.length; ++R) {
-            for (var C = 0; C != data[R].length; ++C) {
+          for (var R = 0; R < data.length; ++R) {
+
+            for (var C = 0; data[R] && C < data[R].length; ++C) {
               if (range.s.r > R) range.s.r = R;
               if (range.s.c > C) range.s.c = C;
               if (range.e.r < R) range.e.r = R;
