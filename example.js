@@ -124,7 +124,11 @@ var workbook = new Workbook(XLSX)
     ]).mergeCells("Main", {
       "s": {"c": 0, "r": 0 },
       "e": {"c": 2, "r": 0 }
-    }).finalize();
+    })
+    .setColWidthChars('Main', 1,72)
+    .finalize();
+
+//workbook.Sheets['Main']['!cols']=[{wch:24}]
 
 var OUTFILE = '/tmp/wb.xlsx';
 var OUTFILE1 = '/tmp/wb1.xlsx';

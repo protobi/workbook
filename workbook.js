@@ -42,6 +42,11 @@
           return ranges[sheetName];
         },
 
+        getColumnProperties: function(sheetName) {
+          var ws = this.getSheet(sheetName);
+          if (!ws['!cols']) ws['!cols'] = [];
+          return ws['!cols'];
+        },
         setCell: function (sheetName, rowIdx, colIdx, val) {
           var rows = this.getSheetRows(sheetName);
           if (!rows[rowIdx]) {
@@ -50,7 +55,18 @@
           rows[rowIdx][colIdx] = val;
           return this;
         },
-
+        setColWidthChars: function(sheetName, colId, width) {
+          var cps = this.getColumnProperties(sheetName);
+          if (!cps[colId]) cps[colId] = {};
+          cps[colId].wch = width;
+          return this;
+        },
+        setColWidthPixels: function(sheetName, colId, width) {
+          var cps = this.getColumnProperties(sheetName);
+          if (!cps[colId]) cps[colId] = {};
+          cps[colId].wpx = width;
+          return this;
+        },
         getCell: function (sheetName, rowIdx, colIdx, val) {
           var rows = this.getSheetRows(sheetName);
           if (!rows[rowIdx]) {
