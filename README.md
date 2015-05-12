@@ -18,7 +18,7 @@ Note that exporting styles is still in development. In the interim, use the foll
 var XLSX = require('xlsx');
 var Workbook = require('./workbook');
 
-var workbook = new Workbook(XLSX)
+var workbook = new Workbook()
     .addRowsToSheet("Main", [
       [
         {

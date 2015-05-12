@@ -6,7 +6,7 @@ function JSDateToExcelDate(inDate) {
   return 25569.0 + ((inDate.getTime() - (inDate.getTimezoneOffset() * 60 * 1000)) / (1000 * 60 * 60 * 24));
 }
 
-var workbook = new Workbook(XLSX)
+var workbook = new Workbook()
     .addRowsToSheet("Main", [
       [ {
         v: "This is a submerged cell",
@@ -46,7 +46,7 @@ var workbook = new Workbook(XLSX)
       ],
       [
         {"v": "Default"},
-        {"v": "Arial", "s": {font: {name: "Arial", sz: 24}}},
+        {"v": "Arial", "s": {font: {name: "Arial", sz: 24, color: {rgb: "FFFF0000"}}}},
         {"v": "Times New Roman", "s": {font: {name: "Times New Roman", sz: 16, bold: true, italic: true, underline: true, strike: true, outline: true, shadow:true, vertAlign: "superscript"}}},
         {"v": "Courier New", "s": {font: {name: "Courier New", sz: 14}}}
       ],

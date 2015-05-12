@@ -7,7 +7,21 @@
   else this[name] = definition();
 }('Workbook', function () {
 
-    return function Workbook(XLSX) {
+  // encode functions lifted from XLSX to eliminate dependency on XLSX so this can be serialized/deserialized to JSON
+  function encode_row(row) { return "" + (row + 1); }
+  function encode_col(col) { var s=""; for(++col; col; col=Math.floor((col-1)/26)) s = String.fromCharCode(((col-1)%26) + 65) + s; return s; }
+  function encode_cell(cell) { return encode_col(cell.c) + encode_row(cell.r); }
+  function encode_range(cs,ce) {
+    if(ce === undefined || typeof ce === 'number') return encode_range(cs.s, cs.e);
+    if(typeof cs !== 'string') cs = encode_cell(cs); if(typeof ce !== 'string') ce = encode_cell(ce);
+    return cs == ce ? cs : cs + ":" + ce;
+  }
+  function datenum(v, date1904) {
+    if (date1904) v += 1462;
+    return (Date.parse(v) - new Date(Date.UTC(1899, 11, 30))) / (24 * 60 * 60 * 1000);
+  }
+
+  return function Workbook() {
 
       var ranges = {}; //track  extent of each sheet
       var rows = {};   // accumulate data rows for each sheet
@@ -16,11 +30,6 @@
         SheetNames: [],
         Sheets: {},
         CellStyles: [],
-
-        datenum: function (v, date1904) {
-          if (date1904) v += 1462;
-          return (Date.parse(v) - new Date(Date.UTC(1899, 11, 30))) / (24 * 60 * 60 * 1000);
-        },
 
         getSheet: function (sheetName) {
           if (!this.Sheets[sheetName]) {
@@ -118,23 +127,24 @@
 
               var cell = (typeof data[R][C] == 'object' ? data[R][C] : {v: data[R][C] });
               if (cell.v == null) continue;
-              var cell_ref = XLSX.utils.encode_cell({c: C, r: R});
+              var cell_ref = encode_cell({c: C, r: R});
 
               if (typeof cell.v === 'number') cell.t = 'n';
               else if (typeof cell.v === 'boolean') cell.t = 'b';
               else if (cell.v instanceof Date) {
                 cell.t = 'n';
-                cell.z = XLSX.SSF._table[14];
-                cell.v = this.datenum(cell.v);
+                cell.z = 'm/d/yy';
+                cell.v = datenum(cell.v);
               }
               else cell.t = 's';
 
               ws[cell_ref] = cell;
             }
           }
-          if (range && range.s.c < 10000000) ws['!ref'] = XLSX.utils.encode_range(range);
+          if (range && range.s.c < 10000000) ws['!ref'] = encode_range(range);
           return ws;
         }
       }
     }
 }));
+
