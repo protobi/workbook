@@ -1,6 +1,6 @@
 {
   "name": "workbook",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "description: Convenience wrapper for js-xlsx to incrementally build Excel workbooks programmatically",
   "main": "workbook.js",
   "keywords": [
