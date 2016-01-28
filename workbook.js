@@ -64,7 +64,10 @@
           rows[rowIdx][colIdx] = val;
           return this;
         },
-          setColWidthg  ].wch = width;
+          setColWidthChars: function(sheetName, colId, width) {
+            var cps = this.getColumnProperties(sheetName);
+            if (!cps[colId]) cps[colId] = {};
+            cps[colId].wch = width;
           return this;
         },
         setColWidthPixels: function(sheetName, colId, width) {
