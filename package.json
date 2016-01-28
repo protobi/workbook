@@ -1,6 +1,6 @@
 {
   "name": "workbook",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "description: Convenience wrapper for js-xlsx to incrementally build Excel workbooks programmatically",
   "main": "workbook.js",
   "keywords": [
@@ -10,6 +10,9 @@
     "create"
   ],
   "devDependencies": {
+    "cheerio": "^0.19.0",
+    "json2csv": "^3.0.1",
+    "jszip": "^2.5.0",
     "xlsx": "git://github.com/protobi/js-xlsx"
   },
   "scripts": {

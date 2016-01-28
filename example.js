@@ -1,4 +1,4 @@
-var XLSX = require('../js-xlsx');
+var XLSX = require('xlsx');
 var Workbook = require('./workbook');
 
 ///credit http://daveaddey.com/?p=40
@@ -6,7 +6,7 @@ function JSDateToExcelDate(inDate) {
   return 25569.0 + ((inDate.getTime() - (inDate.getTimezoneOffset() * 60 * 1000)) / (1000 * 60 * 60 * 24));
 }
 
-var workbook = new Workbook()
+var workbook = new Workbook(  )
     .addRowsToSheet("Main", [
       [ {
         v: "This is a submerged cell",

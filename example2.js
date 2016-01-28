@@ -1,4 +1,4 @@
-var XLSX = require('../js-xlsx');
+var XLSX = require('xlsx');
 var Workbook = require('./workbook');
 
 ///credit http://daveaddey.com/?p=40
