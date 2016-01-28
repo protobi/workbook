@@ -21,7 +21,7 @@
     return (Date.parse(v) - new Date(Date.UTC(1899, 11, 30))) / (24 * 60 * 60 * 1000);
   }
 
-  return function Workbook() {
+  return function Workbook(workbook) {
 
       var ranges = {}; //track  extent of each sheet
       var rows = {};   // accumulate data rows for each sheet
@@ -64,10 +64,7 @@
           rows[rowIdx][colIdx] = val;
           return this;
         },
-        setColWidthChars: function(sheetName, colId, width) {
-          var cps = this.getColumnProperties(sheetName);
-          if (!cps[colId]) cps[colId] = {};
-          cps[colId].wch = width;
+          setColWidthg  ].wch = width;
           return this;
         },
         setColWidthPixels: function(sheetName, colId, width) {
