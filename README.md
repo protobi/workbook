@@ -9,7 +9,7 @@ Wrapper for [SheetJS/js-xlsx](https://github.com/SheetJS/js-xlsx) providing conv
 * `npm install workbook --save`
 * `npm install js-xlsx --save` 
 
-Note that this can also wrap other versions of js-xlsx, e.g. [protobi/js-xlsx](https://github.com/SheetJS/js-xlsx), to allow application f styles using the `.s` attribute instead:
+Note that this can also wrap other versions of js-xlsx, e.g. [protobi/js-xlsx](https://github.com/SheetJS/js-xlsx), to allow application of styles using the `.s` attribute instead:
 
 * `npm install js-xlsx-style --save` 
 
